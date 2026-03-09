@@ -1,0 +1,256 @@
+:root {
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+  color: #f7f7f9;
+  background:
+    radial-gradient(circle at top, rgba(255, 204, 102, 0.2), transparent 28%),
+    linear-gradient(160deg, #1a2233 0%, #233042 48%, #121926 100%);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(135deg, #f97316, #fb7185);
+  color: #111827;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input,
+select {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  background: rgba(15, 23, 42, 0.85);
+  color: inherit;
+}
+
+.app-shell {
+  padding: 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hero,
+.status-row,
+.layout,
+.bottom-grid {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  color: #f6ad55;
+  margin: 0 0 0.45rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  max-width: 40rem;
+  color: rgba(247, 247, 249, 0.78);
+}
+
+.wallet-box,
+.status-row,
+.panel {
+  background: rgba(9, 14, 29, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.wallet-box {
+  padding: 1rem;
+  min-width: 17rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.status-row {
+  padding: 0.85rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 420px);
+  gap: 1.25rem;
+}
+
+.board-panel {
+  min-height: 780px;
+}
+
+.board-shell {
+  height: 100%;
+  min-height: 780px;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 220, 0.35), rgba(186, 157, 104, 0.12)),
+    #d8ceb5;
+}
+
+.sidebar,
+.bottom-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.panel p {
+  color: rgba(247, 247, 249, 0.8);
+}
+
+.emphasis {
+  border-color: rgba(249, 115, 22, 0.38);
+}
+
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.token-grid label,
+.actions {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.actions {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.8rem;
+}
+
+.bottom-grid {
+  grid-template-columns: 1.1fr 1fr 1fr;
+}
+
+.log-list,
+.moment-list {
+  display: grid;
+  gap: 0.7rem;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.log-item,
+.moment-item {
+  padding: 0.8rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: 0.2rem;
+}
+
+.card-preview {
+  min-height: 100%;
+}
+
+.card-surface {
+  min-height: 240px;
+  padding: 1.1rem;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 242, 0.96), rgba(239, 231, 207, 0.9)),
+    #fff8e8;
+  color: #152238;
+  display: grid;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.card-surface h3,
+.card-surface p,
+.card-surface small {
+  margin: 0;
+}
+
+.card-badge {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fffaf0;
+}
+
+.card-badge-community {
+  background: #ef8f34;
+}
+
+.card-badge-rewards {
+  background: #1d9a7c;
+}
+
+@media (max-width: 1100px) {
+  .layout,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .board-panel,
+  .board-shell {
+    min-height: 560px;
+  }
+
+  .token-grid,
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
