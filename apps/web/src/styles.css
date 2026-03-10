@@ -195,6 +195,67 @@ button {
   grid-template-rows: auto minmax(0, 1fr);
 }
 
+@media (max-width: 1500px) {
+  .floating-panel {
+    width: min(20rem, calc(100vw - 2rem));
+    padding: 0.95rem;
+    border-radius: 20px;
+  }
+
+  .floating-log {
+    bottom: 6rem;
+  }
+
+  .floating-story {
+    top: 5.5rem;
+    height: min(34rem, calc(100vh - 11.5rem));
+  }
+
+  .overlay-list {
+    max-height: 14rem;
+    gap: 0.55rem;
+  }
+
+  .overlay-item,
+  .story-card {
+    padding: 0.75rem;
+  }
+
+  .story-card-top {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .story-card-top-no-art {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .story-list {
+    gap: 0.7rem;
+  }
+
+  .story-card h3 {
+    font-size: 1.02rem;
+  }
+
+  .story-card p {
+    font-size: 0.9rem;
+  }
+
+  .story-card small {
+    font-size: 0.82rem;
+  }
+
+  .story-thumb {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
+  .panel-art {
+    min-height: 7rem;
+  }
+}
+
 .overlay-list {
   display: grid;
   gap: 0.7rem;
@@ -253,6 +314,23 @@ button {
   gap: 0.72rem;
 }
 
+.story-card-top {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.story-card-top-no-art {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.story-copy {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
 .story-list {
   min-height: 0;
   overflow: auto;
@@ -261,16 +339,27 @@ button {
   padding-right: 0.2rem;
 }
 
-.panel-art {
+.panel-art,
+.story-thumb {
   position: relative;
   overflow: hidden;
-  min-height: 9rem;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(10, 18, 34, 0.72);
 }
 
-.panel-art::after {
+.panel-art {
+  min-height: 9rem;
+}
+
+.story-thumb {
+  width: 5.25rem;
+  height: 5.25rem;
+  border-radius: 16px;
+}
+
+.panel-art::after,
+.story-thumb::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -279,7 +368,8 @@ button {
     linear-gradient(135deg, rgba(12, 22, 40, 0.12), rgba(237, 93, 71, 0.08));
 }
 
-.panel-art img {
+.panel-art img,
+.story-thumb img {
   display: block;
   width: 100%;
   height: 100%;

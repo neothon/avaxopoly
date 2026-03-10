@@ -654,22 +654,26 @@ export default function App() {
               <div className="story-list">
                 {storyEvents.map(({ event, card, tile, moment, art }) => (
                   <div key={event.id} className="story-card">
-                    {art ? (
-                      <div className="panel-art">
-                        <img src={art} alt={moment?.title ?? card?.title ?? tile?.name ?? "Story art"} />
+                    <div className={art ? "story-card-top" : "story-card-top story-card-top-no-art"}>
+                      {art ? (
+                        <div className="story-thumb">
+                          <img src={art} alt={moment?.title ?? card?.title ?? tile?.name ?? "Story art"} />
+                        </div>
+                      ) : null}
+                      <div className="story-copy">
+                        {card ? (
+                          <span className={`card-badge card-badge-${card.deck}`}>
+                            {card.deck === "community" ? "Community / FUD" : "L1 Rewards"}
+                          </span>
+                        ) : event.type === "purchase" || (event.type === "info" && event.message.includes("passed on")) ? (
+                          <span className="card-badge card-badge-purchase">Purchase</span>
+                        ) : tile ? (
+                          <span className="card-badge card-badge-rewards">Board Lore</span>
+                        ) : null}
+                        <h3>{moment?.title ?? card?.title ?? tile?.name ?? "Avalanche story beat"}</h3>
+                        <p>{moment?.description ?? card?.description ?? tile?.description ?? event.message}</p>
                       </div>
-                    ) : null}
-                    {card ? (
-                      <span className={`card-badge card-badge-${card.deck}`}>
-                        {card.deck === "community" ? "Community / FUD" : "L1 Rewards"}
-                      </span>
-                    ) : event.type === "purchase" || (event.type === "info" && event.message.includes("passed on")) ? (
-                      <span className="card-badge card-badge-purchase">Purchase</span>
-                    ) : tile ? (
-                      <span className="card-badge card-badge-rewards">Board Lore</span>
-                    ) : null}
-                    <h3>{moment?.title ?? card?.title ?? tile?.name ?? "Avalanche story beat"}</h3>
-                    <p>{moment?.description ?? card?.description ?? tile?.description ?? event.message}</p>
+                    </div>
                     <small>{event.message}</small>
                   </div>
                 ))}

@@ -52,6 +52,7 @@ const artByKey: Record<string, string> = {
   "giraffecomics": giraffe,
   gmx,
   "justnthephotog": justin,
+  "justnthephotogthreatenstocutitoff": justin,
   lfj,
   "offthegrid": offTheGrid,
   pharaoh,
