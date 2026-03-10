@@ -1,5 +1,6 @@
 # Avaxopoly
 By https://x.com/0xNeothon
+
 Bare-minimum Avaxopoly MVP scaffold:
 
 - `apps/web`: React + Three.js frontend with wallet connect, deposit flow, board view, and single-player turn loop
