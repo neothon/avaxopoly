@@ -15,7 +15,7 @@ export const NARRATIVE_MOMENTS: NarrativeMoment[] = [
   },
   {
     id: "community-fud-cycle",
-    title: "Community FUD Cycle",
+    title: "Community is the Problem",
     description: "The mood swings but the chain keeps producing blocks.",
     tags: ["fud", "community", "avalanche-native"]
   },
@@ -56,6 +56,12 @@ export const NARRATIVE_MOMENTS: NarrativeMoment[] = [
     tags: ["alpha", "community", "avalanche-native"]
   },
   {
+    id: "avery-nose-clip",
+    title: "Avery's Nose Clip",
+    description: "A legendary bit enters the board as a momentum tile instead of a second Arena.",
+    tags: ["community", "lore", "avalanche-native"]
+  },
+  {
     id: "voh",
     title: "VOH",
     description: "Late-night Avalanche-native momentum arrives as a lore moment rather than a live token.",
@@ -72,6 +78,78 @@ export const NARRATIVE_MOMENTS: NarrativeMoment[] = [
     title: "BANDS",
     description: "Bears and Salmons keep their place on the board, with BANDS preserved as a native reference.",
     tags: ["nft", "gaming", "avalanche-native"]
+  },
+  {
+    id: "stupifff-alpha",
+    title: "@Stupifff shares alpha",
+    description: "The kind of timeline post that sends a whole group chat back onchain.",
+    tags: ["community", "alpha", "cards"]
+  },
+  {
+    id: "neothon-good-vibes",
+    title: "@0xNeothon spreads good vibes",
+    description: "For one brief moment the Avalanche timeline becomes a pleasant place to be.",
+    tags: ["community", "cards", "positive"]
+  },
+  {
+    id: "justn-photog",
+    title: "@JustnThePhotog threatens to cut it off",
+    description: "A reminder that content, morale, and market structure are more correlated than they should be.",
+    tags: ["community", "cards", "fud"]
+  },
+  {
+    id: "polypup-experiment",
+    title: "@PolyPup1 launches an onchain experiment",
+    description: "Avalanche-native curiosity pays out when someone ships instead of posting.",
+    tags: ["builder", "cards", "onchain"]
+  },
+  {
+    id: "community-problem",
+    title: "Community is the Problem",
+    description: "A legendary phrase enters the room and suddenly everyone gets defensive.",
+    tags: ["lore", "cards", "community"]
+  },
+  {
+    id: "coq-season",
+    title: "COQ season returns",
+    description: "Meme gravity reasserts itself and nobody even pretends to resist.",
+    tags: ["meme", "cards", "coq"]
+  },
+  {
+    id: "ket-rotation",
+    title: "KET rotation hits the timeline",
+    description: "The board catches one of those rotations that feels obvious only after it happens.",
+    tags: ["meme", "cards", "ket"]
+  },
+  {
+    id: "nochill-weekend",
+    title: "Avax Has No Chill weekend",
+    description: "Posting volume, stress levels, and meme conviction all climb together.",
+    tags: ["meme", "cards", "nochill"]
+  },
+  {
+    id: "etf-filing",
+    title: "Institutional ETF filing",
+    description: "Everyone starts speaking in inflows, narratives, and inevitable adoption charts.",
+    tags: ["institutional", "cards", "rewards"]
+  },
+  {
+    id: "arena-pump",
+    title: "Arena pump",
+    description: "Momentum returns and the board briefly feels like it was always destined to work.",
+    tags: ["arena", "cards", "rewards"]
+  },
+  {
+    id: "validator-rewards",
+    title: "Validator rewards",
+    description: "The quiet, dependable side of Avalanche gets its moment on stage.",
+    tags: ["validator", "cards", "rewards"]
+  },
+  {
+    id: "gas-fees",
+    title: "Gas fees",
+    description: "Even on the good days, the chain reminds you that activity is never free.",
+    tags: ["fees", "cards", "rewards"]
   }
 ];
 
@@ -80,7 +158,7 @@ export const BOARD_TILES: BoardTile[] = [
     index: 0,
     name: "Enter the Arena",
     kind: "go",
-    description: "Collect 200 AVAX when you pass or land here."
+    description: "Collect 20 AVAX when you pass or land here."
   },
   {
     index: 1,
@@ -88,7 +166,7 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "DEX culture starts the loop.",
     group: "DEXs",
-    cost: 60,
+    cost: 12,
     baseRent: 2,
     monopolyRent: 4,
     rentToken: "KET"
@@ -106,25 +184,25 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Another DEX stop on the brown row.",
     group: "DEXs",
-    cost: 60,
-    baseRent: 4,
-    monopolyRent: 10,
+    cost: 12,
+    baseRent: 3,
+    monopolyRent: 6,
     rentToken: "KET"
   },
   {
     index: 4,
     name: "Staking Tax",
     kind: "tax",
-    description: "Pay 200 AVAX into the Liquidity Pool.",
-    amount: 200
+    description: "Pay 20 AVAX into the Liquidity Pool.",
+    amount: 20
   },
   {
     index: 5,
     name: "DFK Chain",
     kind: "rail",
     description: "L1 rail equivalent. Rent is always paid in AVAX.",
-    cost: 200,
-    rentSteps: [25, 50, 100, 200]
+    cost: 25,
+    rentSteps: [6, 12, 24, 40]
   },
   {
     index: 6,
@@ -132,20 +210,18 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Lending and incentives tile.",
     group: "Lending",
-    cost: 100,
-    baseRent: 6,
-    monopolyRent: 12,
+    cost: 18,
+    baseRent: 4,
+    monopolyRent: 8,
     rentToken: "KET"
   },
   {
     index: 7,
-    name: "Core Wallet",
-    kind: "bonus",
-    description: "A lightweight recovery moment instead of a blank tile.",
-    effect: {
-      id: "core-wallet",
-      description: "Collect 100 AVAX from the bank."
-    }
+    name: "@twitt_tr FUDs Your Project",
+    kind: "card",
+    description: "Draw from Community / FUD and brace for the timeline.",
+    deck: "community",
+    momentIds: ["twitt-fud"]
   },
   {
     index: 8,
@@ -153,28 +229,27 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Another lending stop.",
     group: "Lending",
-    cost: 100,
-    baseRent: 6,
-    monopolyRent: 18,
+    cost: 18,
+    baseRent: 4,
+    monopolyRent: 10,
     rentToken: "KET"
   },
   {
     index: 9,
     name: "Avax Rush",
     kind: "property",
-    description: "Collect 500 AVAX when you land here, plus 50 AVAX if you already own Lending.",
+    description: "Collect 25 AVAX when you land here, plus 5 AVAX if you already own Lending.",
     group: "Lending",
-    cost: 120,
-    baseRent: 8,
-    monopolyRent: 20,
+    cost: 22,
+    baseRent: 5,
+    monopolyRent: 12,
     rentToken: "KET"
   },
   {
     index: 10,
-    name: "@twitt_tr FUDs Your Project",
-    kind: "goToJail",
-    description: "Go directly to jail.",
-    momentIds: ["twitt-fud"]
+    name: "Jail",
+    kind: "jail",
+    description: "Just visiting, unless the timeline threw you in here."
   },
   {
     index: 11,
@@ -182,18 +257,18 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Meme rent is paid in COQ.",
     group: "Meme",
-    cost: 140,
-    baseRent: 10,
-    monopolyRent: 20,
+    cost: 28,
+    baseRent: 6,
+    monopolyRent: 12,
     rentToken: "COQ"
   },
   {
     index: 12,
     name: "Chainlink Oracle",
     kind: "utility",
-    description: "Pay four times the dice roll in AVAX.",
-    cost: 150,
-    rollMultiplier: 4
+    description: "Pay three times the dice roll in AVAX.",
+    cost: 30,
+    rollMultiplier: 3
   },
   {
     index: 13,
@@ -201,9 +276,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "The timeline heats up and rent is paid in NOCHILL.",
     group: "Meme",
-    cost: 140,
-    baseRent: 10,
-    monopolyRent: 22,
+    cost: 28,
+    baseRent: 6,
+    monopolyRent: 13,
     rentToken: "NOCHILL"
   },
   {
@@ -212,9 +287,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "The final meme lane slot uses KET.",
     group: "Meme",
-    cost: 160,
-    baseRent: 12,
-    monopolyRent: 25,
+    cost: 32,
+    baseRent: 7,
+    monopolyRent: 15,
     rentToken: "KET"
   },
   {
@@ -222,18 +297,18 @@ export const BOARD_TILES: BoardTile[] = [
     name: "Beam L1",
     kind: "rail",
     description: "Another L1 rail equivalent.",
-    cost: 200,
-    rentSteps: [25, 50, 100, 200]
+    cost: 25,
+    rentSteps: [6, 12, 24, 40]
   },
   {
     index: 16,
-    name: "Joepegs",
+    name: "Blaze",
     kind: "property",
-    description: "NFT marketplace row begins.",
+    description: "Blaze takes the old Joepegs slot in the NFT row.",
     group: "NFT",
-    cost: 180,
-    baseRent: 14,
-    monopolyRent: 28,
+    cost: 36,
+    baseRent: 8,
+    monopolyRent: 16,
     rentToken: "KET"
   },
   {
@@ -249,9 +324,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "BANDS stays present as lore while this NFT tile keeps the original board slot.",
     group: "NFT",
-    cost: 180,
-    baseRent: 14,
-    monopolyRent: 30,
+    cost: 36,
+    baseRent: 8,
+    monopolyRent: 17,
     rentToken: "KET",
     momentIds: ["bands"]
   },
@@ -261,9 +336,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "The last DEX stop closes the early game loop.",
     group: "DEXs",
-    cost: 120,
-    baseRent: 6,
-    monopolyRent: 12,
+    cost: 24,
+    baseRent: 5,
+    monopolyRent: 9,
     rentToken: "KET"
   },
   {
@@ -279,18 +354,18 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Gaming row begins.",
     group: "Gaming",
-    cost: 220,
-    baseRent: 18,
-    monopolyRent: 36,
+    cost: 44,
+    baseRent: 10,
+    monopolyRent: 20,
     rentToken: "KET"
   },
   {
     index: 22,
-    name: "Community FUD Cycle",
+    name: "Community is the Problem",
     kind: "card",
     description: "Draw a community/fud moment.",
     deck: "community",
-    momentIds: ["community-fud-cycle"]
+    momentIds: ["community-problem"]
   },
   {
     index: 23,
@@ -298,9 +373,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Gaming row continues.",
     group: "Gaming",
-    cost: 220,
-    baseRent: 18,
-    monopolyRent: 40,
+    cost: 44,
+    baseRent: 10,
+    monopolyRent: 22,
     rentToken: "KET"
   },
   {
@@ -309,9 +384,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "A higher-stakes gaming lane.",
     group: "Gaming",
-    cost: 240,
-    baseRent: 20,
-    monopolyRent: 45,
+    cost: 48,
+    baseRent: 12,
+    monopolyRent: 24,
     rentToken: "KET"
   },
   {
@@ -319,8 +394,8 @@ export const BOARD_TILES: BoardTile[] = [
     name: "Dexalot L1",
     kind: "rail",
     description: "L1 rail equivalent.",
-    cost: 200,
-    rentSteps: [25, 50, 100, 200]
+    cost: 25,
+    rentSteps: [6, 12, 24, 40]
   },
   {
     index: 26,
@@ -328,9 +403,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Violet row starts with native lore.",
     group: "Lore",
-    cost: 260,
-    baseRent: 22,
-    monopolyRent: 44,
+    cost: 52,
+    baseRent: 12,
+    monopolyRent: 25,
     rentToken: "AVAX"
   },
   {
@@ -339,20 +414,21 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Institutional backbone of the board.",
     group: "Lore",
-    cost: 260,
-    baseRent: 22,
-    monopolyRent: 46,
+    cost: 52,
+    baseRent: 12,
+    monopolyRent: 26,
     rentToken: "AVAX"
   },
   {
     index: 28,
-    name: "The Arena",
+    name: "Avery's Nose Clip",
     kind: "bonus",
-    description: "A lore tile that rewards momentum.",
+    description: "A lore tile that rewards momentum without duplicating Arena.",
     effect: {
-      id: "the-arena",
-      description: "Collect 120 AVAX from the bank."
-    }
+      id: "avery-nose-clip",
+      description: "Collect 18 AVAX from the bank."
+    },
+    momentIds: ["avery-nose-clip"]
   },
   {
     index: 29,
@@ -360,9 +436,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Late-violet Avalanche lore.",
     group: "Lore",
-    cost: 280,
-    baseRent: 24,
-    monopolyRent: 50,
+    cost: 56,
+    baseRent: 14,
+    monopolyRent: 28,
     rentToken: "AVAX",
     momentIds: ["wrathank-grift"]
   },
@@ -379,9 +455,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Perps and culture lane starts.",
     group: "Culture",
-    cost: 300,
-    baseRent: 26,
-    monopolyRent: 52,
+    cost: 60,
+    baseRent: 14,
+    monopolyRent: 30,
     rentToken: "KET"
   },
   {
@@ -397,9 +473,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Green row stays in the culture lane for MVP.",
     group: "Culture",
-    cost: 300,
-    baseRent: 26,
-    monopolyRent: 54,
+    cost: 60,
+    baseRent: 14,
+    monopolyRent: 31,
     rentToken: "KET"
   },
   {
@@ -407,8 +483,8 @@ export const BOARD_TILES: BoardTile[] = [
     name: "AVAX Validators",
     kind: "rail",
     description: "Final L1 rail equivalent.",
-    cost: 200,
-    rentSteps: [25, 50, 100, 200]
+    cost: 25,
+    rentSteps: [6, 12, 24, 40]
   },
   {
     index: 35,
@@ -416,9 +492,9 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Culture row closes here.",
     group: "Culture",
-    cost: 320,
-    baseRent: 28,
-    monopolyRent: 58,
+    cost: 64,
+    baseRent: 16,
+    monopolyRent: 32,
     rentToken: "KET"
   },
   {
@@ -428,7 +504,7 @@ export const BOARD_TILES: BoardTile[] = [
     description: "A market shock tile that taxes confidence.",
     effect: {
       id: "coinbase-transfer",
-      description: "Pay 150 AVAX into the Liquidity Pool."
+      description: "Pay 24 AVAX into the Liquidity Pool."
     },
     momentIds: ["coinbase-transfer"]
   },
@@ -438,29 +514,30 @@ export const BOARD_TILES: BoardTile[] = [
     kind: "property",
     description: "Infrastructure row begins.",
     group: "Infrastructure",
-    cost: 350,
-    baseRent: 35,
-    monopolyRent: 70,
+    cost: 84,
+    baseRent: 18,
+    monopolyRent: 36,
     rentToken: "AVAX"
   },
   {
     index: 38,
     name: "Inscription Gas Spike",
     kind: "tax",
-    description: "Pay 100 AVAX into the Liquidity Pool.",
-    amount: 100,
+    description: "Pay 12 AVAX into the Liquidity Pool.",
+    amount: 12,
     momentIds: ["inscription-gas-spike"]
   },
   {
     index: 39,
-    name: "Avalanche L1",
+    name: "VOH",
     kind: "property",
-    description: "The most valuable infrastructure tile on the board.",
+    description: "VOH takes the old Avalanche L1 slot as the top-end late-night culture tile.",
     group: "Infrastructure",
-    cost: 400,
-    baseRent: 50,
-    monopolyRent: 100,
-    rentToken: "AVAX"
+    cost: 99,
+    baseRent: 24,
+    monopolyRent: 48,
+    rentToken: "AVAX",
+    momentIds: ["voh"]
   }
 ];
 
@@ -469,57 +546,61 @@ export const COMMUNITY_DECK: CardDefinition[] = [
     id: "market-panic",
     deck: "community",
     title: "Market panic after a large transfer",
-    description: "Lose 150 AVAX to the Liquidity Pool.",
-    effects: [{ type: "debit", token: "AVAX", amount: 150, toFreeParking: true }],
+    description: "Lose 30 AVAX to the Liquidity Pool.",
+    effects: [{ type: "debit", token: "AVAX", amount: 30, toFreeParking: true }],
     momentId: "coinbase-transfer"
   },
   {
     id: "stupifff-alpha",
     deck: "community",
     title: "@Stupifff shares alpha",
-    description: "Earn 100 AVAX from the bank. If you own any Culture property, earn an extra 50 AVAX.",
+    description: "Earn 18 AVAX from the bank. If you own any Culture property, earn an extra 8 AVAX.",
     effects: [
-      { type: "credit", token: "AVAX", amount: 100 },
-      { type: "conditionalCredit", token: "AVAX", amount: 50, propertyGroup: "Culture" }
-    ]
+      { type: "credit", token: "AVAX", amount: 18 },
+      { type: "conditionalCredit", token: "AVAX", amount: 8, propertyGroup: "Culture" }
+    ],
+    momentId: "stupifff-alpha"
   },
   {
     id: "neothon-good-vibes",
     deck: "community",
     title: "@0xNeothon spreads good vibes",
-    description: "Collect 100 AVAX from the bank.",
-    effects: [{ type: "credit", token: "AVAX", amount: 100 }]
+    description: "Collect 16 AVAX from the bank.",
+    effects: [{ type: "credit", token: "AVAX", amount: 16 }],
+    momentId: "neothon-good-vibes"
   },
   {
     id: "justn-photog",
     deck: "community",
     title: "@JustnThePhotog threatens to cut it off",
-    description: "Lose 100 AVAX.",
-    effects: [{ type: "debit", token: "AVAX", amount: 100, toFreeParking: true }]
+    description: "Lose 18 AVAX.",
+    effects: [{ type: "debit", token: "AVAX", amount: 18, toFreeParking: true }],
+    momentId: "justn-photog"
   },
   {
     id: "polypup-experiment",
     deck: "community",
     title: "@PolyPup1 launches an onchain experiment",
-    description: "Earn 100 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 100 }]
+    description: "Earn 16 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 16 }],
+    momentId: "polypup-experiment"
   },
   {
     id: "avalore-quest",
     deck: "community",
     title: "Avalore questline trends",
-    description: "Collect 80 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 80 }],
+    description: "Collect 14 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 14 }],
     momentId: "avalore"
   },
   {
     id: "avery-alpha",
     deck: "community",
     title: "Avery drops strategy alpha",
-    description: "Collect 60 AVAX and 15 KET.",
+    description: "Collect 12 AVAX and 6 KET.",
     effects: [
-      { type: "credit", token: "AVAX", amount: 60 },
-      { type: "credit", token: "KET", amount: 15 }
+      { type: "credit", token: "AVAX", amount: 12 },
+      { type: "credit", token: "KET", amount: 6 }
     ],
     momentId: "avery"
   },
@@ -527,39 +608,41 @@ export const COMMUNITY_DECK: CardDefinition[] = [
     id: "voh-spaces",
     deck: "community",
     title: "VOH keeps the late-night timeline alive",
-    description: "Collect 50 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 50 }],
+    description: "Collect 10 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 10 }],
     momentId: "voh"
   },
   {
     id: "hcash-rumors",
     deck: "community",
     title: "HCash rumors spread",
-    description: "Pay 60 AVAX into the Liquidity Pool.",
-    effects: [{ type: "debit", token: "AVAX", amount: 60, toFreeParking: true }],
+    description: "Pay 12 AVAX into the Liquidity Pool.",
+    effects: [{ type: "debit", token: "AVAX", amount: 12, toFreeParking: true }],
     momentId: "hcash"
   },
   {
     id: "bands-floor-bid",
     deck: "community",
     title: "BANDS defend the floor bid",
-    description: "Collect 70 AVAX if you own any NFT property.",
-    effects: [{ type: "conditionalCredit", token: "AVAX", amount: 70, propertyGroup: "NFT" }],
+    description: "Collect 14 AVAX if you own any NFT property.",
+    effects: [{ type: "conditionalCredit", token: "AVAX", amount: 14, propertyGroup: "NFT" }],
     momentId: "bands"
   },
   {
     id: "community-problem",
     deck: "community",
     title: "Community is the Problem",
-    description: "Pay 90 AVAX.",
-    effects: [{ type: "debit", token: "AVAX", amount: 90, toFreeParking: true }]
+    description: "Pay 16 AVAX.",
+    effects: [{ type: "debit", token: "AVAX", amount: 16, toFreeParking: true }],
+    momentId: "community-problem"
   },
   {
     id: "nochill-weekend",
     deck: "community",
     title: "Avax Has No Chill weekend",
-    description: "Collect 40 NOCHILL.",
-    effects: [{ type: "credit", token: "NOCHILL", amount: 40 }]
+    description: "Collect 12 NOCHILL.",
+    effects: [{ type: "credit", token: "NOCHILL", amount: 12 }],
+    momentId: "nochill-weekend"
   }
 ];
 
@@ -568,57 +651,64 @@ export const REWARDS_DECK: CardDefinition[] = [
     id: "etf-filing",
     deck: "rewards",
     title: "Institutional ETF filing",
-    description: "Collect 300 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 300 }]
+    description: "Collect 40 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 40 }],
+    momentId: "etf-filing"
   },
   {
     id: "arena-pump",
     deck: "rewards",
     title: "Arena pump",
-    description: "Collect 150 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 150 }]
+    description: "Collect 18 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 18 }],
+    momentId: "arena-pump"
   },
   {
     id: "validator-rewards",
     deck: "rewards",
     title: "Validator rewards",
-    description: "Collect 100 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 100 }]
+    description: "Collect 15 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 15 }],
+    momentId: "validator-rewards"
   },
   {
     id: "gas-fees",
     deck: "rewards",
     title: "Gas fees",
-    description: "Pay 25 AVAX per active player.",
-    effects: [{ type: "perPlayerDebit", token: "AVAX", amount: 25 }]
+    description: "Pay 6 AVAX per active player.",
+    effects: [{ type: "perPlayerDebit", token: "AVAX", amount: 6 }],
+    momentId: "gas-fees"
   },
   {
     id: "coq-season",
     deck: "rewards",
     title: "COQ season returns",
-    description: "Collect 40 COQ.",
-    effects: [{ type: "credit", token: "COQ", amount: 40 }]
+    description: "Collect 12 COQ.",
+    effects: [{ type: "credit", token: "COQ", amount: 12 }],
+    momentId: "coq-season"
   },
   {
     id: "ket-rotation",
     deck: "rewards",
     title: "KET rotation hits the timeline",
-    description: "Collect 30 KET.",
-    effects: [{ type: "credit", token: "KET", amount: 30 }]
+    description: "Collect 10 KET.",
+    effects: [{ type: "credit", token: "KET", amount: 10 }],
+    momentId: "ket-rotation"
   },
   {
     id: "nochill-bid",
     deck: "rewards",
     title: "NOCHILL survives the weekend",
-    description: "Collect 35 NOCHILL.",
-    effects: [{ type: "credit", token: "NOCHILL", amount: 35 }]
+    description: "Collect 10 NOCHILL.",
+    effects: [{ type: "credit", token: "NOCHILL", amount: 10 }],
+    momentId: "nochill-weekend"
   },
   {
     id: "avalore-reward",
     deck: "rewards",
     title: "Avalore daily reward",
-    description: "Collect 75 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 75 }],
+    description: "Collect 16 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 16 }],
     momentId: "avalore"
   },
   {
@@ -633,9 +723,8 @@ export const REWARDS_DECK: CardDefinition[] = [
     id: "voh-open-mic",
     deck: "rewards",
     title: "VOH open mic keeps morale high",
-    description: "Collect 65 AVAX.",
-    effects: [{ type: "credit", token: "AVAX", amount: 65 }],
+    description: "Collect 14 AVAX.",
+    effects: [{ type: "credit", token: "AVAX", amount: 14 }],
     momentId: "voh"
   }
 ];
-

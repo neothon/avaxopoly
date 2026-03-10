@@ -1,8 +1,8 @@
 import {
   activateSession,
+  advanceGameTurn,
   buildSettlementPayload,
   createSession,
-  playHumanTurn,
   registerDeposit,
   resolveHumanDecision,
   sessionSnapshot,
@@ -87,7 +87,7 @@ export class SessionStore {
 
   play(sessionId: string) {
     const session = this.requireSession(sessionId);
-    playHumanTurn(session);
+    advanceGameTurn(session);
     return sessionSnapshot(session);
   }
 
@@ -165,4 +165,3 @@ export class SessionStore {
     return deposits;
   }
 }
-

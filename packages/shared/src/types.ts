@@ -30,6 +30,7 @@ export type TurnEventType =
 export type GameStatus =
   | "awaiting_deposit"
   | "awaiting_player_roll"
+  | "awaiting_bot_turn"
   | "awaiting_player_decision"
   | "awaiting_player_swap"
   | "game_over";
@@ -72,7 +73,7 @@ export interface CardDefinition {
 }
 
 export interface TileEffect {
-  id: "avax-rush" | "core-wallet" | "the-arena" | "coinbase-transfer";
+  id: "avax-rush" | "core-wallet" | "avery-nose-clip" | "coinbase-transfer";
   description: string;
 }
 

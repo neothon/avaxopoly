@@ -16,7 +16,7 @@ import type {
 } from "./types";
 
 export const DEFAULT_GAME_CONFIG: GameConfig = {
-  goReward: 200,
+  goReward: 20,
   freeParkingEnabled: true,
   jailTurns: 1,
   maxRounds: 20,
@@ -463,38 +463,38 @@ function sendToJail(session: GameSession, player: PlayerState): void {
 function handleBonusTile(session: GameSession, player: PlayerState, tile: Extract<BoardTile, { kind: "bonus" }>): void {
   switch (tile.effect.id) {
     case "avax-rush": {
-      credit(player, "AVAX", 500);
-      const bonus = ownsGroup(player, "Lending") ? 50 : 0;
+      credit(player, "AVAX", 25);
+      const bonus = ownsGroup(player, "Lending") ? 5 : 0;
       if (bonus > 0) {
         credit(player, "AVAX", bonus);
       }
       pushEvent(session, {
         actorId: player.id,
         type: "reward",
-        message: `${player.name} hit Avax Rush and collected ${500 + bonus} AVAX.`
+        message: `${player.name} hit Avax Rush and collected ${25 + bonus} AVAX.`
       });
       return;
     }
     case "core-wallet":
-      credit(player, "AVAX", 100);
+      credit(player, "AVAX", 12);
       pushEvent(session, {
         actorId: player.id,
         type: "reward",
-        message: `${player.name} found 100 AVAX through Core Wallet.`
+        message: `${player.name} found 12 AVAX through Core Wallet.`
       });
       return;
-    case "the-arena":
-      credit(player, "AVAX", 120);
+    case "avery-nose-clip":
+      credit(player, "AVAX", 18);
       pushEvent(session, {
         actorId: player.id,
         type: "reward",
-        message: `${player.name} soaked up momentum in The Arena for 120 AVAX.`
+        message: `${player.name} caught Avery's Nose Clip momentum for 18 AVAX.`
       });
       return;
     case "coinbase-transfer": {
       const result = resolveDebt(session, player, {
         token: "AVAX",
-        amount: 150,
+        amount: 24,
         reason: "Sends 30M to Coinbase"
       });
       if (result.pendingDecision) {
@@ -616,6 +616,13 @@ function handleLanding(
       }
       if (player.type === "bot" && tile.cost <= player.balances.AVAX) {
         buyProperty(session, player.id, tile.index);
+      } else if (player.type === "bot") {
+        pushEvent(session, {
+          actorId: player.id,
+          type: "info",
+          tileIndex: tile.index,
+          message: `${player.name} passed on ${tile.name}.`
+        });
       }
       return undefined;
     }
@@ -720,7 +727,7 @@ function takeTurn(session: GameSession, playerId: string): void {
       kind: "bonus",
       effect: {
         id: "avax-rush",
-        description: "Collect 500 AVAX, plus 50 AVAX if you already own Lending."
+        description: "Collect 25 AVAX, plus 5 AVAX if you already own Lending."
       }
     });
   }
@@ -753,30 +760,22 @@ function maybeEndGame(session: GameSession): void {
   }
 }
 
-function runBotsUntilHuman(session: GameSession): GameSession {
-  while (session.status !== "game_over" && currentPlayer(session).type === "bot") {
-    takeTurn(session, currentPlayer(session).id);
-    maybeEndGame(session);
+function syncStatusToCurrentPlayer(session: GameSession): void {
+  if (session.status === "game_over" || session.pendingDecision) {
+    return;
   }
-
-  if (session.status !== "game_over" && !session.pendingDecision) {
-    session.status = "awaiting_player_roll";
-  }
-
-  return session;
+  session.status = currentPlayer(session).type === "human" ? "awaiting_player_roll" : "awaiting_bot_turn";
 }
 
-export function playHumanTurn(session: GameSession): GameSession {
-  if (session.status !== "awaiting_player_roll") {
-    throw new Error("Human turn cannot be played right now.");
+export function advanceGameTurn(session: GameSession): GameSession {
+  if (session.status !== "awaiting_player_roll" && session.status !== "awaiting_bot_turn") {
+    throw new Error("No turn can be advanced right now.");
   }
-  if (currentPlayer(session).id !== HUMAN_PLAYER_ID) {
-    throw new Error("It is not the human player's turn.");
-  }
-  takeTurn(session, HUMAN_PLAYER_ID);
+
+  takeTurn(session, currentPlayer(session).id);
   maybeEndGame(session);
-  if (session.status === "awaiting_player_roll") {
-    return runBotsUntilHuman(session);
+  if ((session.status === "awaiting_player_roll" || session.status === "awaiting_bot_turn") && !session.pendingDecision) {
+    syncStatusToCurrentPlayer(session);
   }
   return session;
 }
@@ -819,7 +818,10 @@ export function resolveHumanDecision(session: GameSession, action: "buy" | "skip
     session.pendingDecision = undefined;
     advanceTurn(session);
     maybeEndGame(session);
-    return runBotsUntilHuman(session);
+    if (session.status !== "game_over") {
+      syncStatusToCurrentPlayer(session);
+    }
+    return session;
   }
 
   if (pending.kind === "raise-liquidity") {
@@ -835,7 +837,10 @@ export function resolveHumanDecision(session: GameSession, action: "buy" | "skip
     session.pendingDecision = undefined;
     advanceTurn(session);
     maybeEndGame(session);
-    return runBotsUntilHuman(session);
+    if (session.status !== "game_over") {
+      syncStatusToCurrentPlayer(session);
+    }
+    return session;
   }
 
   return session;
