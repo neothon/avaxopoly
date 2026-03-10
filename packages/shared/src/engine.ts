@@ -454,6 +454,12 @@ function sendToJail(session: GameSession, player: PlayerState): void {
   player.inJailTurns = session.config.jailTurns;
   pushEvent(session, {
     actorId: player.id,
+    type: "move",
+    message: `${player.name} was moved to Jail.`,
+    tileIndex: 10
+  });
+  pushEvent(session, {
+    actorId: player.id,
     type: "penalty",
     message: `${player.name} was sent to jail.`,
     tileIndex: 10

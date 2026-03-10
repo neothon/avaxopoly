@@ -388,17 +388,9 @@ function CenterPanelArtwork() {
   const texture = useTexture(centerBoardArt);
 
   return (
-    <mesh position={[0, CENTER_PANEL_Y + CENTER_PANEL_HEIGHT / 2 + 0.025, 0]} castShadow receiveShadow renderOrder={12}>
-      <boxGeometry args={[BOARD_SIZE - TILE_SIZE * 2 - 0.38, 0.03, BOARD_SIZE - TILE_SIZE * 2 - 0.38]} />
-      <meshStandardMaterial
-        map={texture}
-        color="#ffffff"
-        side={DoubleSide}
-        toneMapped={false}
-        emissive="#0b1423"
-        emissiveIntensity={0.12}
-        roughness={0.78}
-      />
+    <mesh position={[0, BOARD_SURFACE_TOP + 0.025, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={20}>
+      <planeGeometry args={[BOARD_SIZE - TILE_SIZE * 2 - 0.3, BOARD_SIZE - TILE_SIZE * 2 - 0.3]} />
+      <meshBasicMaterial map={texture} toneMapped={false} side={DoubleSide} depthWrite={false} />
     </mesh>
   );
 }
@@ -510,15 +502,6 @@ export function BoardScene({
           <meshStandardMaterial color="#f0e8d6" roughness={0.74} />
         </RoundedBox>
 
-        <RoundedBox
-          args={[BOARD_SIZE - TILE_SIZE * 2 - 0.3, CENTER_PANEL_HEIGHT, BOARD_SIZE - TILE_SIZE * 2 - 0.3]}
-          radius={0.14}
-          smoothness={6}
-          position={[0, CENTER_PANEL_Y, 0]}
-          receiveShadow
-        >
-          <meshStandardMaterial color="#1a2d49" emissive="#0e1a2e" emissiveIntensity={0.42} roughness={0.7} />
-        </RoundedBox>
         <CenterPanelArtwork />
 
         {boardTiles.map((tile) => (
@@ -528,14 +511,14 @@ export function BoardScene({
         <DeckCard
           title="Community / FUD"
           accent="#ef8f34"
-          position={[-3.9, DECK_Y, -1.2]}
+          position={[-4.7, DECK_Y, -3.8]}
           rotation={-0.26}
           highlighted={highlightedDeck === "community"}
         />
         <DeckCard
           title="L1 Rewards"
           accent="#1d9a7c"
-          position={[4.2, DECK_Y, 1.8]}
+          position={[4.8, DECK_Y, 3.95]}
           rotation={0.22}
           highlighted={highlightedDeck === "rewards"}
         />

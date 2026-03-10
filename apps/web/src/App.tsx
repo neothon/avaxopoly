@@ -600,19 +600,6 @@ export default function App() {
             <h1>AVAXOPOLY</h1>
             <p className="hud-subtitle">{session?.status?.replaceAll("_", " ") ?? "awaiting setup"}</p>
           </div>
-          <div className="wallet-pills">
-            {isConnected ? (
-              <button className="hud-chip" onClick={() => disconnect()}>
-                {address?.slice(0, 6)}...{address?.slice(-4)}
-              </button>
-            ) : (
-              connectors.map((connector) => (
-                <button key={connector.uid} className="hud-chip" onClick={() => connect({ connector })} disabled={isConnecting}>
-                  {connector.name}
-                </button>
-              ))
-            )}
-          </div>
         </header>
 
         <div className="hud-toolbar">
@@ -625,6 +612,19 @@ export default function App() {
           <button className={`toolbar-button ${sessionDrawerOpen ? "is-active" : ""}`} onClick={() => setSessionDrawerOpen((current) => !current)}>
             Session
           </button>
+          <div className="wallet-pills wallet-pills-toolbar">
+            {isConnected ? (
+              <button className="hud-chip" onClick={() => disconnect()}>
+                {address?.slice(0, 6)}...{address?.slice(-4)}
+              </button>
+            ) : (
+              connectors.map((connector) => (
+                <button key={connector.uid} className="hud-chip" onClick={() => connect({ connector })} disabled={isConnecting}>
+                  {connector.name}
+                </button>
+              ))
+            )}
+          </div>
         </div>
 
         <div className="hud-status-line">
